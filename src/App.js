@@ -1,12 +1,19 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { MainPage } from "./pages/main";
+import { Login } from "./pages/login";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Oi1</h1>
-    </div>
-  );
-}
+const App = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/">
+        <MainPage />
+      </Route>
+    </Switch>
+  </BrowserRouter>
+);
 
 export default App;
