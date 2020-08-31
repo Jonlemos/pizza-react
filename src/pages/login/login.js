@@ -1,26 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from '../../services/firebase'
 import { Button, Grid } from "@material-ui/core";
 import { ReactComponent as MainLogo } from "./logo.svg";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCkdWm92N6brYRoz7WGFeQxrTmdBX0_3hI",
-  authDomain: "pizzariali.firebaseapp.com",
-  databaseURL: "https://pizzariali.firebaseio.com",
-  projectId: "pizzariali",
-  storageBucket: "pizzariali.appspot.com",
-  messagingSenderId: "592046647589",
-  appId: "1:592046647589:web:11401a8b1db206da3d12cc",
-  measurementId: "G-Z4CWHQL2NQ",
-};
-firebase.initializeApp(firebaseConfig);
+import {ColorContext} from '../../app'
 
-const login = () => {
-  const provider = new firebase.auth.GithubAuthProvider();
-  firebase.auth().signInWithRedirect(provider);
-};
 
 export default () => {
   const [userInfo, setUserInfo] = useState({
@@ -40,7 +25,12 @@ export default () => {
     });
   }, []);
 
-  const logout = () => {
+  const login = useCallback(() => {
+    const provider = new firebase.auth.GithubAuthProvider();
+    firebase.auth().signInWithRedirect(provider);
+  }, []);
+
+  const logout = useCallback(() => {
     firebase
       .auth()
       .signOut()
@@ -51,7 +41,11 @@ export default () => {
           user: null,
         });
       });
-  };
+  }, []);
+
+  // if (!logoutFunction) {
+  //   logoutFunction = logout;
+  // }
 
   return (
     <Container>
@@ -63,27 +57,22 @@ export default () => {
           {isUserLoggedIn && (
             <>
               <pre>{user.displayName}</pre>
-              <Button variant="contained" onClick={logout}>
+              <Button variant="contained" color="primary" onClick={logout}>
                 Sair
               </Button>
             </>
           )}
           {!isUserLoggedIn && (
-            <FaceBookButton
-              onClick={
-                login
-
-                //   () => {
-                //   const provider = new firebase.auth.GithubAuthProvider();
-                //   firebase.auth().signInWithRedirect(provider);
-                // }
-              }
+            <>
+              <FaceBookButton
+              onClick={login}
               variant="contained"
               color="secondary"
               fullWidth
-            >
-              Entrar com Facebook
-            </FaceBookButton>
+              >
+                Entrar com Facebook
+              </FaceBookButton>
+            </>
           )}
         </Grid>
       </Grid>
