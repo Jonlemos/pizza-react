@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import styled from "styled-components";
 import firebase from '../../services/firebase'
 import { Button, Grid } from "@material-ui/core";
@@ -6,6 +6,7 @@ import { ReactComponent as MainLogo } from "./logo.svg";
 
 import {ColorContext} from '../../App'
 
+// const {color, setColor} = useContext({ColorContext})
 
 export default () => {
   const [userInfo, setUserInfo] = useState({
@@ -42,10 +43,6 @@ export default () => {
         });
       });
   }, []);
-
-  // if (!logoutFunction) {
-  //   logoutFunction = logout;
-  // }
 
   return (
     <Container>
