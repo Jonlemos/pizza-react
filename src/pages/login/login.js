@@ -4,7 +4,7 @@ import firebase from '../../services/firebase'
 import { Button, Grid } from "@material-ui/core";
 import { ReactComponent as MainLogo } from "./logo.svg";
 
-import {ColorContext} from '../../app'
+import {ColorContext} from '../../App'
 
 
 export default () => {
