@@ -10,12 +10,12 @@ import App from './App'
 const Root = () => {
 
   return (
-  <AutProvider>    
-      <CssBaseline />
-      <BrowserRouter>
-        <Route component={App}/>
-      </BrowserRouter>
-  </AutProvider>
+    <AutProvider>    
+        <CssBaseline />
+        <BrowserRouter>
+            <Route component={App}/>
+        </BrowserRouter>
+    </AutProvider>
 )};
 
 export default Root; 

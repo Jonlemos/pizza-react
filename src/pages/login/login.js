@@ -1,45 +1,12 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import firebase from '../../services/firebase'
 import { Button, Grid } from "@material-ui/core";
 import { ReactComponent as MainLogo } from "./logo.svg";
+import { AuthContext } from "../../contexts/auth";
 
 
 export default () => {
-  const [userInfo, setUserInfo] = useState({
-    isUserLoggedIn: false,
-    user: null,
-  });
-
-  const { isUserLoggedIn, user } = userInfo;
-
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      console.log("logou com:", user);
-      setUserInfo({
-        isUserLoggedIn: !!user,
-        user,
-      });
-    });
-  }, []);
-
-  const login = useCallback(() => {
-    const provider = new firebase.auth.GithubAuthProvider();
-    firebase.auth().signInWithRedirect(provider);
-  }, []);
-
-  const logout = useCallback(() => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        console.log("deslog");
-        setUserInfo({
-          isUserLoggedIn: false,
-          user: null,
-        });
-      });
-  }, []);
+  const {login} = useContext(AuthContext)
 
   return (
     <Container>
@@ -48,15 +15,15 @@ export default () => {
           <Logo />
         </Grid>
         <Grid item xs={12} container justify="center">
-          {isUserLoggedIn && (
+          {/* {isUserLoggedIn && (
             <>
               <pre>{user.displayName}</pre>
               <Button variant="contained" color="primary" onClick={logout}>
                 Sair
               </Button>
             </>
-          )}
-          {!isUserLoggedIn && (
+          )} */}
+          {/* {!isUserLoggedIn && ( */}
             <>
               <FaceBookButton
               onClick={login}
@@ -67,7 +34,7 @@ export default () => {
                 Entrar com Facebook
               </FaceBookButton>
             </>
-          )}
+          {/* )} */}
         </Grid>
       </Grid>
     </Container>

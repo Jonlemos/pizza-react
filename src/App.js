@@ -1,12 +1,26 @@
-import React, { lazy, Suspense} from "react";
+import React, { lazy, Suspense, useEffect, useContext} from "react";
 import { Route, Switch } from "react-router-dom"
+import firebase from './services/firebase'
 import { LinearProgress } from "@material-ui/core";
+import {AuthContext} from './contexts/auth'
+
 
 const MainPage = lazy(() => import('./pages/main'))
 const Login = lazy(() => import('./pages/login') )
 
 
 const App = () => {
+  const {userInfo, setUserInfo} = useContext(AuthContext)
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log("logou com:", user);
+      setUserInfo({
+        isUserLoggedIn: !!user,
+        user,
+      });
+    });
+  }, []);
+
   return(
     <Suspense fallback ={<LinearProgress/>}>
       <Switch>
