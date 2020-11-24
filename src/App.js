@@ -32,7 +32,6 @@ const App = () => {
     console.log('ainda não checou se usuário está logado');
     return <LinearProgress/>
   }
-  console.log('já chechou')
 
   if(isUserLoggedIn && location.pathname === '/login' ){
     return <Redirect to='/' />
@@ -41,22 +40,6 @@ const App = () => {
   if(!isUserLoggedIn && location.pathname !== '/login'){
     return <Redirect to='./login' />
   }
-
-  // if(isUserLoggedIn){
-  //   console.log('logado')
-  //   if(location.pathname === '/login'){
-      
-  //   } else {
-  //     console.log('nada')
-  //   }
-  // }else{
-  //   console.log('deslogado')
-  //   if(location.pathname !== '/login'){
-  //     return <Redirect to='./login' />
-  //   } else {
-  //     console.log('nada')
-  //   }
-  // }
 
   return(
     <Suspense fallback ={<LinearProgress/>}>
