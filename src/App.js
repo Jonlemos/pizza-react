@@ -34,21 +34,29 @@ const App = () => {
   }
   console.log('já chechou')
 
-  if(isUserLoggedIn){
-    console.log('logado')
-    if(location.pathname === '/login'){
-      return <Redirect to='/' />
-    } else {
-      console.log('nada')
-    }
-  }else{
-    console.log('deslogado')
-    if(location.pathname !== '/login'){
-      return <Redirect to='./login' />
-    } else {
-      console.log('nada')
-    }
+  if(isUserLoggedIn && location.pathname === '/login' ){
+    return <Redirect to='/' />
   }
+
+  if(!isUserLoggedIn && location.pathname !== '/login'){
+    return <Redirect to='./login' />
+  }
+
+  // if(isUserLoggedIn){
+  //   console.log('logado')
+  //   if(location.pathname === '/login'){
+      
+  //   } else {
+  //     console.log('nada')
+  //   }
+  // }else{
+  //   console.log('deslogado')
+  //   if(location.pathname !== '/login'){
+  //     return <Redirect to='./login' />
+  //   } else {
+  //     console.log('nada')
+  //   }
+  // }
 
   return(
     <Suspense fallback ={<LinearProgress/>}>
