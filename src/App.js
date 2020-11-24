@@ -53,7 +53,6 @@ const App = () => {
       </Switch>
     </Suspense>
   )
-
 }
 
 export default App
