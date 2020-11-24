@@ -15,15 +15,6 @@ export default () => {
           <Logo />
         </Grid>
         <Grid item xs={12} container justify="center">
-          {/* {isUserLoggedIn && (
-            <>
-              <pre>{user.displayName}</pre>
-              <Button variant="contained" color="primary" onClick={logout}>
-                Sair
-              </Button>
-            </>
-          )} */}
-          {/* {!isUserLoggedIn && ( */}
             <>
               <FaceBookButton
               onClick={login}
@@ -34,7 +25,6 @@ export default () => {
                 Entrar com Facebook
               </FaceBookButton>
             </>
-          {/* )} */}
         </Grid>
       </Grid>
     </Container>
