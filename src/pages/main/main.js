@@ -1,8 +1,8 @@
 import React, {useState, useContext} from "react";
 import styled from 'styled-components'
-import {AppBar, Toolbar, IconButton, Typography, Menu, MenuItem} from '@material-ui/core'
+import {AppBar, Toolbar as MaterialToolbar, IconButton, Typography, Menu, MenuItem} from '@material-ui/core'
 import {AccountCircle} from '@material-ui/icons'
-import { ReactComponent as MainLogo } from "../login/logo.svg";
+import { ReactComponent as MainLogo } from "../../images/logo.svg";
 import {AuthContext} from '../../contexts/auth'
 
 export default () => {
@@ -37,6 +37,12 @@ export default () => {
     </>
   )
 };
+
+const Toolbar = styled(MaterialToolbar)`
+  margin: 0 auto;
+  max-width:960px;
+  width: 100%;
+`
 
 const LogoContainer = styled.div`
   flex-grow:1;

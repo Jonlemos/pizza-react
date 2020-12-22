@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { Button, Grid } from "@material-ui/core";
-import { ReactComponent as MainLogo } from "./logo.svg";
+import { ReactComponent as MainLogo } from "../../images/logo.svg";
 import { AuthContext } from "../../contexts/auth";
 
 
