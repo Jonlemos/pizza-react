@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import styled from 'styled-components'
-import {AppBar, Toolbar as MaterialToolbar, IconButton, Typography, Menu, MenuItem, Grid} from '@material-ui/core'
+import {AppBar, Toolbar as MaterialToolbar, IconButton, Typography, Menu, MenuItem, Grid, withStyles} from '@material-ui/core'
 import {AccountCircle} from '@material-ui/icons'
 import { ReactComponent as MainLogo } from "../../images/logo.svg";
 import {AuthContext} from '../../contexts/auth'
@@ -35,6 +35,9 @@ export default () => {
           </Menu>
         </Toolbar>
       </AppBar>
+
+      <Spacer />
+
       <Content>
         <Grid container justify='center'>
           <Grid item>
@@ -61,8 +64,15 @@ const LogoContainer = styled.div`
 
 const Logo = styled(MainLogo)`
   width: 200px;
-  height: 50px
+  height: 50px;
 `
 const Content =  styled.main`
-padding:80px 20px 20px;
+padding: 20px;
 `
+
+const style = (theme) => ({
+    main: theme.mixins.toolbar
+})
+const Spacer = withStyles(style)(({classes}) => (
+  <div className={classes.main}/>
+))
