@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import styled from 'styled-components'
-import {AppBar, Toolbar as MaterialToolbar, IconButton, Typography, Menu, MenuItem, Grid, withStyles} from '@material-ui/core'
+import {AppBar, Toolbar as MaterialToolbar, IconButton, Typography, Menu, MenuItem, Grid, withStyles, Paper, Divider as MaterialDivider} from '@material-ui/core'
 import {AccountCircle} from '@material-ui/icons'
 import { ReactComponent as MainLogo } from "../../images/logo.svg";
 import {AuthContext} from '../../contexts/auth'
@@ -39,18 +39,67 @@ export default () => {
       <Spacer />
 
       <Content>
-        <Grid container justify='center'>
-          <Grid item>
-            <Typography variant='h3'> 
+        <Grid container direction='column' alignItems='center'>
+            <Typography variant='h3' gutterBottom> 
               O que vai ser hoje, {userName} 
             </Typography>
-            
-          </Grid>
+            <Typography variant='h4' gutterBottom>
+              Escolha o tamanho da Pizza:
+            </Typography>
+        </Grid>
+        <Grid container spacing={6} >
+          {pizzaSizes.map(pizza =>(
+            <Grid item key={pizza.id} xs={4}>
+              <PaperPizza>
+                <div>{pizza.size}cm</div>
+                <Divider/>
+                <Typography variant='h5'>{pizza.name}</Typography>
+                <Typography>{pizza.slices} fatias, {pizza.flavours} sabores</Typography>
+              </PaperPizza>
+            </Grid>
+          ))}
+
         </Grid>
       </Content>
     </>
   )
 };
+
+const pizzaSizes = [
+  {
+    id:0,
+    name:'Pequena',
+    size: 28,
+    slice: 2,
+    flavours: 1
+  },
+  {
+    id:1,
+    name:'Média',
+    size: 30,
+    slice: 6,
+    flavours: 2
+  },
+  {
+    id:2,
+    name:'Grande',
+    size: 32,
+    slice: 8,
+    flavours: 3
+  },
+]
+
+const Divider = styled(MaterialDivider)`
+  margin:20px 0;
+  width:100%;
+`
+
+const PaperPizza = styled(Paper)`
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  padding:20px 0;
+`
 
 const Toolbar = styled(MaterialToolbar)`
   margin: 0 auto;
