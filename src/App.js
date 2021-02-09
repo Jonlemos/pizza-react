@@ -19,7 +19,10 @@ const App = () => {
       console.log("logou com:", user);
       setUserInfo({
         isUserLoggedIn: !!user,
-        user,
+        user: user && {
+          ...user,
+          fistName: user.displayName.split(' ')[0]
+        }
       });
       setDidCheckUserin(true);
     });
