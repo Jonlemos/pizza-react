@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { Button, Grid } from "@material-ui/core";
-import { ReactComponent as MainLogo } from "../../images/logo.svg";
-import { AuthContext } from "../../contexts/auth";
-
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { Button, Grid } from '@material-ui/core';
+import { ReactComponent as MainLogo } from '../../images/logo.svg';
+import { AuthContext } from '../../contexts/auth';
 
 export default () => {
-  const {login} = useContext(AuthContext)
+  const { login } = useContext(AuthContext);
 
   return (
     <Container>
@@ -15,16 +14,16 @@ export default () => {
           <Logo />
         </Grid>
         <Grid item xs={12} container justify="center">
-            <>
-              <FaceBookButton
+          <>
+            <FaceBookButton
               onClick={login}
               variant="contained"
               color="secondary"
               fullWidth
-              >
-                Entrar com Facebook
-              </FaceBookButton>
-            </>
+            >
+              Entrar com Facebook
+            </FaceBookButton>
+          </>
         </Grid>
       </Grid>
     </Container>
@@ -40,8 +39,8 @@ const Logo = styled(MainLogo)`
 `;
 
 const FaceBookButton = styled(Button).attrs({
-  variant: "contained",
-  color: "secondary",
+  variant: 'contained',
+  color: 'secondary',
   fullWidth: true,
 })`
   && {

@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { AuthContext } from "../../contexts/auth";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 import {
-    Typography,
-    Grid,
-    Paper,
-    Divider as MaterialDivider,
-} from "@material-ui/core";
+  Typography,
+  Grid,
+  Paper,
+  Divider as MaterialDivider,
+} from '@material-ui/core';
+import { AuthContext } from '../../contexts/auth';
+import pizzaSizes from '../../fake-data/pizza-sizes';
 
 export default () => {
   const { userInfo } = useContext(AuthContext);
@@ -21,13 +22,19 @@ export default () => {
           <Grid item key={pizza.id} xs>
             <PaperPizza>
               <Pizza>
-                <PizzaText>{pizza.size}cm</PizzaText>
+                <PizzaText>
+                  {pizza.size}
+                  cm
+                </PizzaText>
               </Pizza>
               <Divider />
               <Typography variant="h5">{pizza.name}</Typography>
               <Typography>
-                {pizza.slices} fatias, {pizza.flavours}{" "}
-                {singularOrPlural(pizza.flavours, "sabor", "sabores")}
+                {pizza.slices} fatias, {pizza.flavours}{' '}
+                {
+                  // eslint-disable-next-line no-use-before-define
+                  singularOrPlural(pizza.flavours, 'sabor', 'sabores')
+                }
               </Typography>
             </PaperPizza>
           </Grid>
@@ -41,30 +48,6 @@ function singularOrPlural(amount, singular, plural) {
   return amount === 1 ? singular : plural;
 }
 
-const pizzaSizes = [
-  {
-    id: 0,
-    name: "Pequena",
-    size: 28,
-    slice: 2,
-    flavours: 1,
-  },
-  {
-    id: 1,
-    name: "Média",
-    size: 30,
-    slice: 6,
-    flavours: 2,
-  },
-  {
-    id: 2,
-    name: "Grande",
-    size: 32,
-    slice: 8,
-    flavours: 3,
-  },
-];
-
 const Divider = styled(MaterialDivider)`
   margin: 20px 0;
   width: 100%;
@@ -77,7 +60,7 @@ const PizzasGrid = styled(Grid).attrs({
 `;
 const Title = styled(Typography).attrs({
   gutterBottom: true,
-  align: "center",
+  align: 'center',
 })``;
 
 const PaperPizza = styled(Paper)`
@@ -99,7 +82,7 @@ const Pizza = styled.div`
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     background: #ccc;
     position: absolute;
     transform: rotate(45deg);
@@ -116,7 +99,7 @@ const Pizza = styled.div`
   }
 `;
 const PizzaText = styled(Typography).attrs({
-  variant: "h5",
+  variant: 'h5',
 })`
   display: flex;
   align-items: center;

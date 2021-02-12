@@ -1,10 +1,10 @@
-import React, {createContext, useCallback, useState} from 'react'
-import firebase from '../services/firebase'
+import React, { createContext, useCallback, useState } from 'react';
+import firebase from '../services/firebase';
 
-export const AuthContext = createContext()
+export const AuthContext = createContext();
 
-const Auth = ({children}) => {
-
+// eslint-disable-next-line react/prop-types
+const Auth = ({ children }) => {
   const [userInfo, setUserInfo] = useState({
     isUserLoggedIn: false,
     user: null,
@@ -20,7 +20,8 @@ const Auth = ({children}) => {
       .auth()
       .signOut()
       .then(() => {
-        console.log("deslog");
+        // eslint-disable-next-line no-console
+        console.log('deslog');
         setUserInfo({
           isUserLoggedIn: false,
           user: null,
@@ -28,16 +29,18 @@ const Auth = ({children}) => {
       });
   }, []);
 
-  return(
-    <AuthContext.Provider value={{
-      login,
-      logout,
-      userInfo,
-      setUserInfo,
-    }}>
+  return (
+    <AuthContext.Provider
+      value={{
+        login,
+        logout,
+        userInfo,
+        setUserInfo,
+      }}
+    >
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
-export default Auth
+export default Auth;

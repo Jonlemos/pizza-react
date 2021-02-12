@@ -1,26 +1,28 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es2021": true
     },
+    "parser": "babel-eslint",   
     "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "airbnb",
+        "prettier",
+        "prettier/react"   
     ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 2018,
+        "ecmaVersion": 11,
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
     "rules": {
+        "prettier/prettier":[ "error", {"endOfLine":"auto"}],
+        "react/jsx-filename-extension": [1,{"extensions": [".js", ".jsx"]}]   
     }
 }

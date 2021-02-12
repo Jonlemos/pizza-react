@@ -1,5 +1,5 @@
-import React, {useState, useContext} from "react";
-import styled from "styled-components";
+import React, { useState, useContext } from 'react';
+import styled from 'styled-components';
 import {
   AppBar,
   Toolbar as MaterialToolbar,
@@ -7,16 +7,15 @@ import {
   Typography,
   Menu,
   MenuItem,
-  Divider as MaterialDivider,
-} from "@material-ui/core";
-import { AccountCircle } from "@material-ui/icons";
-import { ReactComponent as MainLogo } from "../../images/logo.svg";
-import { AuthContext } from "../../contexts/auth";
+} from '@material-ui/core';
+import { AccountCircle } from '@material-ui/icons';
+import { ReactComponent as MainLogo } from '../../images/logo.svg';
+import { AuthContext } from '../../contexts/auth';
 
 const Header = () => {
   const [anchorElement, setAnchorElement] = useState();
   const { userInfo, logout } = useContext(AuthContext);
-//   const userName = userInfo.user.displayName.split(" ")[0];
+  //   const userName = userInfo.user.displayName.split(" ")[0];
 
   const handleOpenMenu = (e) => {
     setAnchorElement(e.target);
@@ -47,11 +46,6 @@ const Header = () => {
     </AppBar>
   );
 };
-
-const Divider = styled(MaterialDivider)`
-  margin: 20px 0;
-  width: 100%;
-`;
 
 const Toolbar = styled(MaterialToolbar)`
   margin: 0 auto;
