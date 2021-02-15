@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import styled from 'styled-components';
+import React, { useState, useContext } from 'react'
+import styled from 'styled-components'
 import {
   AppBar,
   Toolbar as MaterialToolbar,
@@ -7,23 +7,23 @@ import {
   Typography,
   Menu,
   MenuItem,
-} from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
-import { ReactComponent as MainLogo } from '../../images/logo.svg';
-import { AuthContext } from '../../contexts/auth';
+} from '@material-ui/core'
+import { AccountCircle } from '@material-ui/icons'
+import { ReactComponent as MainLogo } from '../../images/logo.svg'
+import { AuthContext } from '../../contexts/auth'
 
 const Header = () => {
-  const [anchorElement, setAnchorElement] = useState();
-  const { userInfo, logout } = useContext(AuthContext);
+  const [anchorElement, setAnchorElement] = useState()
+  const { userInfo, logout } = useContext(AuthContext)
   //   const userName = userInfo.user.displayName.split(" ")[0];
 
   const handleOpenMenu = (e) => {
-    setAnchorElement(e.target);
-  };
+    setAnchorElement(e.target)
+  }
 
   const handleClose = () => {
-    setAnchorElement(null);
-  };
+    setAnchorElement(null)
+  }
 
   return (
     <AppBar>
@@ -44,22 +44,22 @@ const Header = () => {
         </Menu>
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}
 
 const Toolbar = styled(MaterialToolbar)`
   margin: 0 auto;
   max-width: 960px;
   width: 100%;
-`;
+`
 
 const LogoContainer = styled.div`
   flex-grow: 1;
-`;
+`
 
 const Logo = styled(MainLogo)`
   width: 200px;
   height: 50px;
-`;
+`
 
-export default Header;
+export default Header

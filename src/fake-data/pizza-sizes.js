@@ -20,4 +20,4 @@ export default [
     slice: 8,
     flavours: 3,
   },
-];
+]

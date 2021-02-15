@@ -1,16 +1,18 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 import {
+  Card,
+  CardActionArea as MaterialCardActionArea,
   Typography,
   Grid,
-  Paper,
   Divider as MaterialDivider,
-} from '@material-ui/core';
-import { AuthContext } from '../../contexts/auth';
-import pizzaSizes from '../../fake-data/pizza-sizes';
+} from '@material-ui/core'
+import { AuthContext } from '../../contexts/auth'
+import pizzaSizes from '../../fake-data/pizza-sizes'
 
 export default () => {
-  const { userInfo } = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext)
   return (
     <>
       <Grid container direction="column" alignItems="center">
@@ -20,65 +22,71 @@ export default () => {
       <PizzasGrid>
         {pizzaSizes.map((pizza) => (
           <Grid item key={pizza.id} xs>
-            <PaperPizza>
-              <Pizza>
-                <PizzaText>
-                  {pizza.size}
-                  cm
-                </PizzaText>
-              </Pizza>
-              <Divider />
-              <Typography variant="h5">{pizza.name}</Typography>
-              <Typography>
-                {pizza.slices} fatias, {pizza.flavours}{' '}
-                {
-                  // eslint-disable-next-line no-use-before-define
-                  singularOrPlural(pizza.flavours, 'sabor', 'sabores')
-                }
-              </Typography>
-            </PaperPizza>
+            <Card>
+              <CardActionArea to="/sabores-da-pizza">
+                <Pizza>
+                  <PizzaText>
+                    {pizza.size}
+                    cm
+                  </PizzaText>
+                </Pizza>
+                <Divider />
+                <Typography variant="h5">{pizza.name}</Typography>
+                <Typography>
+                  {pizza.slices} fatias, {pizza.flavours}{' '}
+                  {
+                    // eslint-disable-next-line no-use-before-define
+                    singularOrPlural(pizza.flavours, 'sabor', 'sabores')
+                  }
+                </Typography>
+              </CardActionArea>
+            </Card>
           </Grid>
         ))}
       </PizzasGrid>
     </>
-  );
-};
+  )
+}
 
 function singularOrPlural(amount, singular, plural) {
-  return amount === 1 ? singular : plural;
+  return amount === 1 ? singular : plural
 }
 
 const Divider = styled(MaterialDivider)`
   margin: 20px 0;
   width: 100%;
-`;
+`
 const PizzasGrid = styled(Grid).attrs({
   container: true,
-  spacing: 6,
+  spacing: 2,
 })`
   padding: 20px;
-`;
+`
 const Title = styled(Typography).attrs({
   gutterBottom: true,
   align: 'center',
-})``;
+})``
 
-const PaperPizza = styled(Paper)`
+const CardActionArea = styled(MaterialCardActionArea).attrs({
+  component: Link,
+})`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
   min-width: 250px;
-`;
+`
 const Pizza = styled.div`
   position: relative;
   border: 1px solid #ccc;
   border-radius: 50%;
   display: flex;
+  background: #fff;
   justify-content: center;
   align-items: center;
   height: 200px;
   width: 200px;
+  z-index: 1;
 
   &::before,
   &::after {
@@ -97,7 +105,7 @@ const Pizza = styled.div`
     height: 160px;
     width: 1px;
   }
-`;
+`
 const PizzaText = styled(Typography).attrs({
   variant: 'h5',
 })`
@@ -110,4 +118,4 @@ const PizzaText = styled(Typography).attrs({
   background: #fff;
   position: relative;
   z-index: 1;
-`;
+`
