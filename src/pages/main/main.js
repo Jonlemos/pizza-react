@@ -6,9 +6,9 @@ import { withStyles } from '@material-ui/core'
 import Header from './header'
 
 const ChoozePizzaSize = lazy(() => import('../choose-pizza-size/'))
-const ChoozePizzaFlavours = lazy(() => import('../choose-pizza-flavours'))
+const ChoosePizzaFlavours = lazy(() => import('../choose-pizza-flavours'))
 
-export default () => (
+const Main = () => (
   <>
     <Header />
 
@@ -17,12 +17,8 @@ export default () => (
     <Content>
       <Suspense fallback="Loading...">
         <Switch>
-          <Route path="/" exact>
-            <ChoozePizzaSize />
-          </Route>
-          <Route path="/sabores-da-pizza">
-            <ChoozePizzaFlavours />
-          </Route>
+          <Route path="/" component={ChoozePizzaSize} exact />
+          <Route path="/sabores-da-pizza" component={ChoosePizzaFlavours} />
         </Switch>
       </Suspense>
     </Content>
@@ -39,3 +35,5 @@ const style = (theme) => ({
 const Spacer = withStyles(style)(({ classes }) => (
   <div className={classes.main} />
 ))
+
+export default Main

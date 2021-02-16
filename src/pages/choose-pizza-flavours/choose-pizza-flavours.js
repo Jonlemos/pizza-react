@@ -1,7 +1,15 @@
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import React from 'react'
 
-export default () => (
-  <>
-    <h1>Escolha o sabor da pizza</h1>
-  </>
-)
+const ChoosePizzaFlavours = ({ location }) => {
+  console.log(location)
+
+  return (
+    <>
+      <h1>Escolha o sabor da pizza</h1>
+    </>
+  )
+}
+
+export default ChoosePizzaFlavours
