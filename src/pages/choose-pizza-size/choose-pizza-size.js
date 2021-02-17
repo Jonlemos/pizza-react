@@ -11,6 +11,8 @@ import {
 import { AuthContext } from '../../contexts/auth'
 import pizzaSizes from '../../fake-data/pizza-sizes'
 
+import { CHOOSE_PIZZA_FLAVOURS } from '../../routes'
+
 export default () => {
   const { userInfo } = useContext(AuthContext)
   return (
@@ -25,7 +27,7 @@ export default () => {
             <Card>
               <CardActionArea
                 to={{
-                  pathname: '/sabores-da-pizza',
+                  pathname: CHOOSE_PIZZA_FLAVOURS,
                   state: pizza,
                 }}
               >

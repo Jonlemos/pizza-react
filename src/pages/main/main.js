@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core'
 
 import Header from './header'
 
+import { HOME, CHOOSE_PIZZA_FLAVOURS } from '../../routes'
+
 const ChoozePizzaSize = lazy(() => import('../choose-pizza-size/'))
 const ChoosePizzaFlavours = lazy(() => import('../choose-pizza-flavours'))
 
@@ -17,8 +19,8 @@ const Main = () => (
     <Content>
       <Suspense fallback="Loading...">
         <Switch>
-          <Route path="/" component={ChoozePizzaSize} exact />
-          <Route path="/sabores-da-pizza" component={ChoosePizzaFlavours} />
+          <Route path={HOME} component={ChoozePizzaSize} exact />
+          <Route path={CHOOSE_PIZZA_FLAVOURS} component={ChoosePizzaFlavours} />
         </Switch>
       </Suspense>
     </Content>
