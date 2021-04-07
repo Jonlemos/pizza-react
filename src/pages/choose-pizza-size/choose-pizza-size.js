@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -8,6 +10,8 @@ import {
   Grid,
   Divider as MaterialDivider,
 } from '@material-ui/core'
+import { H3, H4, HeaderContent } from '../../ui'
+import { singularOrPlural } from '../../utils'
 import { AuthContext } from '../../contexts/auth'
 import pizzaSizes from '../../fake-data/pizza-sizes'
 
@@ -17,10 +21,10 @@ export default () => {
   const { userInfo } = useContext(AuthContext)
   return (
     <>
-      <Grid container direction="column" alignItems="center">
-        <Title variant="h3">O que vai ser hoje, {userInfo.user.fistName}</Title>
-        <Title variant="h4">Escolha o tamanho da Pizza:</Title>
-      </Grid>
+      <HeaderContent>
+        <H3>O que vai ser hoje, {userInfo.user.fistName}</H3>
+        <H4>Escolha o tamanho da Pizza:</H4>
+      </HeaderContent>
       <PizzasGrid>
         {pizzaSizes.map((pizza) => (
           <Grid item key={pizza.id} xs>
@@ -55,10 +59,6 @@ export default () => {
   )
 }
 
-function singularOrPlural(amount, singular, plural) {
-  return amount === 1 ? singular : plural
-}
-
 const Divider = styled(MaterialDivider)`
   margin: 20px 0;
   width: 100%;
@@ -69,11 +69,6 @@ const PizzasGrid = styled(Grid).attrs({
 })`
   padding: 20px;
 `
-const Title = styled(Typography).attrs({
-  gutterBottom: true,
-  align: 'center',
-})``
-
 const CardActionArea = styled(MaterialCardActionArea).attrs({
   component: Link,
 })`

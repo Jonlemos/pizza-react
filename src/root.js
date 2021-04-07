@@ -5,7 +5,7 @@ import {
   createMuiTheme,
   MuiThemeProvider,
 } from '@material-ui/core'
-import AutProvider from './contexts/auth'
+import AuthProvider from './contexts/auth'
 import App from './App'
 
 const theme = createMuiTheme({
@@ -16,12 +16,12 @@ const theme = createMuiTheme({
 
 const Root = () => (
   <MuiThemeProvider theme={theme}>
-    <AutProvider>
+    <AuthProvider>
       <CssBaseline />
       <BrowserRouter>
         <Route component={App} />
       </BrowserRouter>
-    </AutProvider>
+    </AuthProvider>
   </MuiThemeProvider>
 )
 
